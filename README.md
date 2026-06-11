@@ -2,7 +2,7 @@
 
 *"Lazy? Sometimes. Fast when it matters? Absolutely. Especially if there's a game involved."*
 
-📍 Philippines – 🕙 `22:22` (my internal clock is stuck here. please send help.)
+📍 Philippines
 
 ---
 
