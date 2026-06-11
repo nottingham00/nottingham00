@@ -1,7 +1,7 @@
 # 🎮 nottingham00
 
 > *"Lazy? Sometimes. Fast? Only if it's game dev."*  
-📍 Philippines – stuck at `22:22`
+📍 Philippines
 
 ---
 
