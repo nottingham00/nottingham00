@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nottingham00 · portfolio</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -53,6 +55,11 @@
             padding-bottom: 0.35rem;
         }
 
+        .location i {
+            margin-right: 6px;
+            font-size: 0.85rem;
+        }
+
         .bio {
             color: #334155;
             font-size: 0.95rem;
@@ -80,13 +87,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
+        }
+
+        .btn i {
+            font-size: 1rem;
+            color: #4b6b8f;
+            transition: color 0.2s;
         }
 
         .btn:hover {
             background: #ffffff;
             border-color: #94a3b8;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .btn:hover i {
+            color: #1a2c3e;
         }
 
         hr {
@@ -100,12 +117,18 @@
             color: #8b9ab0;
             margin-top: 1rem;
         }
+
+        .footer i {
+            margin: 0 2px;
+        }
     </style>
 </head>
 <body>
     <div class="card">
         <h1>nottingham00</h1>
-        <div class="location">Philippines</div>
+        <div class="location">
+            <i class="fas fa-map-marker-alt"></i> Philippines
+        </div>
 
         <div class="bio">
             Game development & reverse engineering.<br>
@@ -114,17 +137,17 @@
 
         <div class="links">
             <a href="https://github.com/nottingham00" class="btn" target="_blank">
-                GitHub Profile →
+                <i class="fab fa-github"></i> GitHub Profile
             </a>
             <a href="https://github.com/nottingham00?tab=repositories" class="btn" target="_blank">
-                All Repositories →
+                <i class="fas fa-code-branch"></i> All Repositories
             </a>
         </div>
 
         <hr>
 
         <div class="footer">
-            Available for collaboration · <span id="year"></span>
+            <i class="far fa-envelope"></i> Available for collaboration · <span id="year"></span>
         </div>
     </div>
 
