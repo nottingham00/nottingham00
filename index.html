@@ -4,46 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nottingham00 · portfolio</title>
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --bg: #ffffff;
+            --surface: #f8f8f8;
+            --text: #1a1a1a;
+            --text-dim: #666666;
+            --accent: #000000;
+            --accent-dark: #333333;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background: #f5f7fa;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--surface) 100%);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
             min-height: 100vh;
-            padding: 1.5rem;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        .card {
-            background: #ffffff;
-            border-radius: 24px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            padding: 2rem;
-            max-width: 480px;
+        /* Subtle background animation */
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            text-align: center;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            animation: fadeUp 0.5s ease-out;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 0, 0, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.01) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+            animation: gradientShift 8s ease-in-out infinite;
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 35px rgba(0,0,0,0.08);
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            animation: fadeIn 0.8s ease-out;
         }
 
-        @keyframes fadeUp {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(15px);
+                transform: translateY(12px);
             }
             to {
                 opacity: 1;
@@ -51,223 +75,350 @@
             }
         }
 
+        /* Header section */
+        .header {
+            display: flex;
+            align-items: flex-start;
+            gap: 28px;
+            margin-bottom: 40px;
+            animation-delay: 0.1s;
+        }
+
         .avatar {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            border: 2px solid var(--text);
+            flex-shrink: 0;
             object-fit: cover;
-            margin-bottom: 1rem;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .avatar:hover {
-            transform: scale(1.02);
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            flex: 1;
+            animation: fadeIn 0.8s ease-out 0.3s both;
         }
 
         h1 {
-            font-size: 2.2rem;
-            font-weight: 600;
-            color: #1a2c3e;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
             letter-spacing: -0.5px;
-            margin-bottom: 0.3rem;
+            color: var(--text);
+        }
+
+        .username {
+            font-size: 14px;
+            color: var(--text-dim);
+            margin-bottom: 12px;
+            font-weight: 500;
         }
 
         .location {
-            font-size: 0.85rem;
-            color: #5f7f9e;
-            margin-bottom: 0.8rem;
+            color: var(--text-dim);
+            font-size: 14px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .location i {
-            margin-right: 6px;
+        .location::before {
+            content: '●';
+            color: var(--text);
         }
 
         .stats {
-            background: #f0f4f9;
-            border-radius: 40px;
-            padding: 0.4rem 1rem;
-            display: inline-flex;
+            color: var(--text-dim);
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        /* Bio section */
+        .bio {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text);
+            margin-bottom: 24px;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        .bio strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Links section */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 32px;
+            animation: fadeIn 0.8s ease-out 0.5s both;
+        }
+
+        .skill {
+            display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.85rem;
-            color: #2c3f55;
-            margin: 0.8rem 0 1rem;
-            font-weight: 500;
+            font-size: 13px;
+            color: var(--text);
+            transition: transform 0.3s ease;
         }
 
-        .stats i {
-            font-size: 0.9rem;
-            color: #3a6b92;
+        .skill:hover {
+            transform: translateY(-3px);
         }
 
-        #commit-count {
-            font-weight: 700;
-            color: #1a5d8f;
-            min-width: 50px;
-            display: inline-block;
-        }
-
-        .bio {
-            color: #2c3f55;
-            font-size: 0.92rem;
-            line-height: 1.45;
-            margin: 1rem 0 1.8rem;
-        }
-
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.7rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .btn {
-            background: #f0f4f9;
-            border: 1px solid #dce5ec;
-            border-radius: 40px;
-            padding: 0.7rem;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            color: #1a2c3e;
-            transition: all 0.2s;
+        .skill-logo {
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            font-size: 16px;
         }
 
-        .btn i {
-            color: #4c6a8a;
-            font-size: 1rem;
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--accent);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .btn:hover {
-            background: #ffffff;
-            border-color: #b9cfec;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        a svg {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        a::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--accent);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        a:hover {
+            color: var(--bg);
+            transform: translateX(2px);
+        }
+
+        a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Divider */
         hr {
             border: none;
-            border-top: 1px solid #e2e8f0;
-            margin: 1.2rem 0 0.8rem;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--text-dim), transparent);
+            margin: 40px 0;
+            animation: fadeIn 0.8s ease-out 0.6s both;
         }
 
-        .footer {
-            font-size: 0.7rem;
-            color: #8ba0b5;
+        /* Footer */
+        footer {
+            font-size: 13px;
+            color: var(--text-dim);
+            text-align: center;
+            animation: fadeIn 0.8s ease-out 0.7s both;
         }
 
-        .footer i {
-            margin-right: 4px;
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--text);
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .status:hover {
+            background: rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            main {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .avatar {
+                width: 80px;
+                height: 80px;
+            }
+
+            .links {
+                gap: 10px;
+            }
+
+            a {
+                font-size: 13px;
+                padding: 6px 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <!-- Replace with your actual photo URL -->
-        <img class="avatar" src="https://ui-avatars.com/api/?background=2c3e50&color=fff&rounded=true&size=110&name=N00" alt="nottingham00 profile photo">
-        
-        <h1>nottingham00</h1>
-        <div class="location">
-            <i class="fas fa-map-marker-alt"></i> Philippines
-        </div>
+    <main>
+        <section class="header">
+            <img src="https://ui-avatars.com/api/?background=000000&color=ffffff&rounded=true&size=110&name=N00&bold=true" 
+                 alt="nottingham00 profile" 
+                 class="avatar">
+            <div class="header-content">
+                <h1>MJ</h1>
+                <p class="username">nottingham00</p>
+                <div class="location">Quezon City, Philippines</div>
+                <div class="stats">Total public commits: —</div>
+            </div>
+        </section>
 
-        <!-- Live commit counter -->
-        <div class="stats">
-            <i class="fas fa-code-commit"></i>
-            <span>Total public commits:</span>
-            <span id="commit-count">—</span>
-        </div>
+        <section class="bio">
+            <strong>Game development</strong> & reverse engineering.<br>
+            <strong>Desktop tooling</strong>, modding, and preservation.
+        </section>
 
-        <div class="bio">
-            Game development & reverse engineering.<br>
-            Desktop tooling, modding, and preservation.
-        </div>
+        <section class="skills">
+            <div class="skill">
+                <div class="skill-logo">🎮</div>
+                <span>Game Dev</span>
+            </div>
+            <div class="skill">
+                <div class="skill-logo">🔧</div>
+                <span>Godot/Lua</span>
+            </div>
+            <div class="skill">
+                <div class="skill-logo">⚙️</div>
+                <span>Reverse Eng</span>
+            </div>
+            <div class="skill">
+                <div class="skill-logo">🖥️</div>
+                <span>Desktop Apps</span>
+            </div>
+            <div class="skill">
+                <div class="skill-logo">💻</div>
+                <span>C++/Python</span>
+            </div>
+            <div class="skill">
+                <div class="skill-logo">⚛️</div>
+                <span>React</span>
+            </div>
+        </section>
 
-        <div class="links">
-            <a href="https://github.com/nottingham00" class="btn" target="_blank">
-                <i class="fab fa-github"></i> GitHub Profile
+        <section class="links">
+            <a href="https://github.com/nottingham00" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                GitHub
             </a>
-            <a href="https://github.com/nottingham00?tab=repositories" class="btn" target="_blank">
-                <i class="fas fa-code-branch"></i> All Repositories
+            <a href="https://github.com/nottingham00?tab=repositories" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                Repositories
             </a>
-        </div>
+        </section>
 
         <hr>
 
-        <div class="footer">
-            <i class="far fa-envelope"></i> Available for collaboration · <span id="year"></span>
-        </div>
-    </div>
+        <footer>
+            <div class="status">
+                <span class="pulse"></span>
+                Available for collaboration
+            </div>
+        </footer>
+    </main>
 
     <script>
-        // Sync commit count from GitHub API
-        const username = 'nottingham00';
-        const commitSpan = document.getElementById('commit-count');
-
-        async function fetchAllCommits() {
-            try {
-                // Step 1: get all public repos
-                const reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`);
-                if (!reposRes.ok) throw new Error('Failed to fetch repos');
-                const repos = await reposRes.json();
-                
-                let totalCommits = 0;
-                // Step 2: fetch commits for each repo (last 100 per repo)
-                const commitPromises = repos.map(async (repo) => {
-                    if (repo.fork) return 0; // skip forks (optional, can remove if you want to count forks)
-                    try {
-                        const commitsRes = await fetch(`https://api.github.com/repos/${username}/${repo.name}/commits?per_page=100&author=${username}`);
-                        if (!commitsRes.ok) return 0;
-                        const commits = await commitsRes.json();
-                        // If commits returned as array (and not limited by pagination), count them
-                        return Array.isArray(commits) ? commits.length : 0;
-                    } catch (err) {
-                        console.warn(`Error fetching commits for ${repo.name}:`, err);
-                        return 0;
-                    }
-                });
-                
-                const commitCounts = await Promise.all(commitPromises);
-                totalCommits = commitCounts.reduce((sum, count) => sum + count, 0);
-                
-                // Animate the number update
-                if (totalCommits > 0) {
-                    animateNumber(commitSpan, 0, totalCommits, 800);
-                } else {
-                    commitSpan.textContent = '0';
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
-            } catch (error) {
-                console.error('Failed to fetch commits:', error);
-                commitSpan.textContent = '?';
-                commitSpan.style.color = '#b91c1c';
+            });
+        });
+
+        // Add a subtle animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.6s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section, footer').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-nav');
             }
-        }
+        });
 
-        function animateNumber(element, start, end, duration) {
-            const startTime = performance.now();
-            const update = (currentTime) => {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const current = Math.floor(start + (end - start) * progress);
-                element.textContent = current.toLocaleString();
-                if (progress < 1) {
-                    requestAnimationFrame(update);
-                } else {
-                    element.textContent = end.toLocaleString();
-                }
-            };
-            requestAnimationFrame(update);
-        }
-
-        // Set current year
-        document.getElementById('year').innerText = new Date().getFullYear();
-        
-        // Fetch commits on page load
-        fetchAllCommits();
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-nav');
+        });
     </script>
 </body>
 </html>
