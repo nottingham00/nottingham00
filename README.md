@@ -18,7 +18,6 @@
 |---------|---------------|
 | **[Novella-Launcher](https://github.com/nottingham00/Novella-Launcher)** | Electron app to manage visual novels + VNDB |
 | **[BoletariaReborn](https://github.com/nottingham00/BoletariaReborn)** | Reverse‑engineering Demon’s Souls (PS3 → PC) |
-| **[amxmodxassistant](https://github.com/nottingham00/amxmodxassistant)** | Half‑Life modding tool (GPL‑3.0) |
 
 ---
 
