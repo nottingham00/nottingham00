@@ -12,15 +12,6 @@
 
 ---
 
-## 🧩 Projects
-
-| Project | What it does |
-|---------|---------------|
-| **[Novella-Launcher](https://github.com/nottingham00/Novella-Launcher)** | Electron app to manage visual novels + VNDB |
-| **[BoletariaReborn](https://github.com/nottingham00/BoletariaReborn)** | Reverse‑engineering Demon’s Souls (PS3 → PC) |
-
----
-
 ## 📊 Stats (fine, here)
 
 ![GitHub stats](https://github-readme-stats.vercel.app/api?username=nottingham00&show_icons=true&theme=tokyonight&hide_title=true&hide=prs,issues)
